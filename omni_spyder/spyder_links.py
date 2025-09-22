@@ -39,7 +39,10 @@ def catch_links(f_task):
         # print(ci_url)
         ci_resp = get_cookies.request_auto(ci_url)
         ci_task_info = {}
-        ci_task_data = json.loads(ci_resp.text)['data']
+        try:
+            ci_task_data = json.loads(ci_resp.text)['data']
+        except:
+            ci_task_data=None
         # print(ci_task_data)
         if not ci_task_data:
             product = "NA"

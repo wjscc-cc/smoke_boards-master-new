@@ -5,7 +5,7 @@ import re
 
 
 def catch_result(f_result):
-    f_task = open("task.txt", "r", encoding='latin-1')
+    f_task = open("task.txt", "r", encoding='utf8')
     task_list = f_task.readlines()
 
     # 获取omni任务当前运行状态
@@ -17,7 +17,7 @@ def catch_result(f_result):
         omniLink_s = info[6].strip()
         print(num, product, end="---")
         if omniLink_s == "NA":
-            result = "NA"
+            result = "未出包"
         else:
             taskId = re.search("\d+", omniLink_s).group()
             omniLink = "http://omni.pt.miui.srv/api/task/executionsInfo?taskId=" + taskId
@@ -48,7 +48,7 @@ def catch_result(f_result):
                         time.sleep(10 * count1)
                         info_response1 = get_cookies.request_auto(reportInfo_url)
                 except:
-                    info_response1 = None
+                        info_response1 = None
 
                 # time.sleep(1)
                 info_response = get_cookies.request_auto(reportInfo_url)
@@ -69,7 +69,7 @@ def catch_result(f_result):
                 else:
                     result = "NOT INFO"
             else:
-                result = "RUNNING/QUEUING"
+                result = "Running"
         f_result.write(result)
         f_result.write(("\n"))
         print(result)
