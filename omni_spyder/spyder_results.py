@@ -5,7 +5,7 @@ import re
 
 
 def catch_result(f_result):
-    f_task = open("task.txt","r")
+    f_task = open("task.txt", "r", encoding='latin-1')
     task_list = f_task.readlines()
 
     # 获取omni任务当前运行状态
@@ -13,9 +13,9 @@ def catch_result(f_result):
     for task in task_list:
         num = num + 1
         info = task.split("\t")
-        product  =info[0]
+        product = info[0]
         omniLink_s = info[6].strip()
-        print(num,product, end="---")
+        print(num, product, end="---")
         if omniLink_s == "NA":
             result = "NA"
         else:
@@ -32,15 +32,15 @@ def catch_result(f_result):
                 str_list = s.split('/')
                 str_0_2 = f"{re.sub('-', '/', str_list[0])}/{str_list[1]}"
                 zipionId = str_list[0].split('-')[0]
-                str_2 = f"http://omni.pt.miui.srv/execution/resultDetail?url=http://cnbj1-fds.api.xiaomi.net/omni.upload/execution_result/{str_0_2}.zip&executionId={zipionId}"
 
+                str_2 = f'http://omni.pt.miui.srv/execution/result/download?url=http://cnbj1-fds.api.xiaomi.net/omni.upload/execution_result/{str_0_2}.zip&executionId={zipionId}'
 
                 try:
-                    count1=0
+                    count1 = 0
                     info_response1 = get_cookies.request_auto(str_2)
-                    print(info_response1)
+                    # print(info_response1)
                     while str(info_response1) != "<Response [200]>":
-                        print(info_response1)
+                        # print(info_response1)
                         print(num, product, end="---")
                         count1 = count1 + 1
                         if count1 > 5:
@@ -48,13 +48,13 @@ def catch_result(f_result):
                         time.sleep(10 * count1)
                         info_response1 = get_cookies.request_auto(reportInfo_url)
                 except:
-                    info_response1=None
+                    info_response1 = None
 
-                time.sleep(1)
+                # time.sleep(1)
                 info_response = get_cookies.request_auto(reportInfo_url)
-                if  str(info_response) != "<Response [200]>":
-                    print(info_response)
-                    print(num,product, end="---")
+                if str(info_response) != "<Response [200]>":
+                    # print(info_response)
+                    print(num, product, end="---")
                     # time.sleep(10)
                     try:
                         info_response = get_cookies.request_auto(reportInfo_url)
@@ -73,4 +73,4 @@ def catch_result(f_result):
         f_result.write(result)
         f_result.write(("\n"))
         print(result)
-    time.sleep(1)
+    # time.sleep(1)
