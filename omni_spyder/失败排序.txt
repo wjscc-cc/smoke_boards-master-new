@@ -1,0 +1,28 @@
+内部代码	地区	安卓版本	日期	失败数量	任务链接
+charoite	GLOBAL	V	25.9.24	5	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9344905
+	dew	GLOBAL	V	25.9.24	5	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345091
+	tanzanite	GLOBAL	V	25.9.24	2	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9344926
+	rodin	CN	W	25.9.24	5	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9344819
+	onyx	CN	W	25.9.24	3	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9344880
+	onyx	MI	W	25.9.24	4	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9344889
+	onyx	IN_GLOBAL	V	25.9.24	6	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345342
+	amethyst	MI	W	25.9.24	10	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9344961
+	beryl	IN_GLOBAL	V	25.9.24	4	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345174
+	creek	GLOBAL	V	25.9.24	4	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345070
+	muyu	CN	W	25.9.24	8	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345276
+	houji	MI	W	25.9.24	6	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9344719
+	ruyi	MI	W	25.9.24	6	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9344877
+	sheng	CN	W	25.9.24	12	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345250
+	corot	GLOBAL	W	25.9.24	20	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345107
+	river	GLOBAL	V	25.9.24	5	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345032
+	sky	IN_GLOBAL	V	25.9.24	7	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345057
+	fire	GLOBAL	V	25.9.24	4	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345370
+	fire	GLOBAL	V	25.9.24	5	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345372
+	liuqin	CN	V	25.9.24	6	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345222
+	flame	CN	V	25.9.24	8	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345075
+	pond	GLOBAL	V	25.9.24	4	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9344853
+	gale	IN_GLOBAL	V	25.9.24	8	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9344920
+	gale	GLOBAL	V	25.9.24	8	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345202
+	gust	GLOBAL	V	25.9.24	6	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345203
+	atmos	GLOBAL	V	25.9.24	7	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9345150
+	

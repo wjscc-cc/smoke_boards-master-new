@@ -1,12 +1,14 @@
 import json
-import time
-import com.get_cookies2 as get_cookies
 import re
+import time
+
+import com.get_cookies2 as get_cookies
 
 
 def catch_result(f_result):
     f_task = open("task.txt", "r", encoding='utf8')
     task_list = f_task.readlines()
+    result_dir = {}
 
     # 获取omni任务当前运行状态
     num = 0
@@ -14,6 +16,11 @@ def catch_result(f_result):
         num = num + 1
         info = task.split("\t")
         product = info[0]
+        task_url = info[6]
+
+        detail_list = info[0:4]
+
+        # print(detail_list)
         omniLink_s = info[6].strip()
         print(num, product, end="---")
         if omniLink_s == "NA":
@@ -48,7 +55,7 @@ def catch_result(f_result):
                         time.sleep(10 * count1)
                         info_response1 = get_cookies.request_auto(reportInfo_url)
                 except:
-                        info_response1 = None
+                    info_response1 = None
 
                 # time.sleep(1)
                 info_response = get_cookies.request_auto(reportInfo_url)
@@ -66,6 +73,11 @@ def catch_result(f_result):
                     pass_num = re.search("pass \d+", reportInfo).group()[5:]
                     fail_num = re.search("fail \d+", reportInfo).group()[5:]
                     result = total_num + "\\" + fail_num
+                    detail_list.append(fail_num)
+                    result_dir[task_url] = detail_list
+                    detail_list.append(task_url)
+
+
                 else:
                     result = "NOT INFO"
             else:
@@ -73,4 +85,13 @@ def catch_result(f_result):
         f_result.write(result)
         f_result.write(("\n"))
         print(result)
+
     # time.sleep(1)
+    title = ['内部代码\t', '地区\t', '安卓版本\t', '日期\t', '失败数量\t', '任务链接\n']
+    with open('失败排序.txt', 'a+', encoding='utf8') as f_result_or:
+        f_result_or.truncate(0)
+        for i in title:
+            f_result_or.write(i)
+        for j in result_dir:
+            for k in result_dir[j]:
+                f_result_or.write(f'{k}\t')
