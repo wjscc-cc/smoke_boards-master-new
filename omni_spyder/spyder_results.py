@@ -1,14 +1,14 @@
 import json
 import re
 import time
-
+from data import data_list
 import com.get_cookies2 as get_cookies
 
 
 def catch_result(f_result):
     f_task = open("task.txt", "r", encoding='utf8')
     task_list = f_task.readlines()
-    result_dir = {}
+    result_dir = []
 
     # 获取omni任务当前运行状态
     num = 0
@@ -16,9 +16,8 @@ def catch_result(f_result):
         num = num + 1
         info = task.split("\t")
         product = info[0]
-        task_url = info[6]
 
-        detail_list = info[0:4]
+        detail_list = []
 
         # print(detail_list)
         omniLink_s = info[6].strip()
@@ -73,9 +72,20 @@ def catch_result(f_result):
                     pass_num = re.search("pass \d+", reportInfo).group()[5:]
                     fail_num = re.search("fail \d+", reportInfo).group()[5:]
                     result = total_num + "\\" + fail_num
-                    detail_list.append(fail_num)
-                    result_dir[task_url] = detail_list
-                    detail_list.append(task_url)
+                    numb='NA'
+                    phone='NA'
+                    for i in data_list:
+
+                        if info[0] in i and info[1] in i:
+                            numb=i[3]
+                            phone=i[1]
+                    detail_list.append(int(fail_num))
+                    detail_list.append(phone)
+                    detail_list.append(numb)
+                    detail_list.extend(info)
+
+                    result_dir.append(detail_list)
+
 
 
                 else:
@@ -85,13 +95,13 @@ def catch_result(f_result):
         f_result.write(result)
         f_result.write(("\n"))
         print(result)
-
+    result_dir.sort(key=lambda x: x[0],reverse = True )
     # time.sleep(1)
-    title = ['内部代码\t', '地区\t', '安卓版本\t', '日期\t', '失败数量\t', '任务链接\n']
+    title = ['失败数量\t', '机型\t','节点\t','内部代码\t','地区\t', '安卓版本\t', '日期\t', '任务链接\n']
     with open('失败排序.txt', 'a+', encoding='utf8') as f_result_or:
         f_result_or.truncate(0)
         for i in title:
             f_result_or.write(i)
         for j in result_dir:
-            for k in result_dir[j]:
+            for k in j:
                 f_result_or.write(f'{k}\t')
