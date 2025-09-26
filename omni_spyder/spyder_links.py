@@ -1,7 +1,8 @@
 import json
 import time
+
 import com.get_cookies2 as get_cookies
-from pathlib import Path
+
 
 # def delete_txt_file(filename):
 #     file = Path(filename)

@@ -1,0 +1,5 @@
+失败数量	机型	节点	内部代码	地区	安卓版本	日期	任务链接
+13	NA	NA	river	GLOBAL	V	25.9.26	Failed	426.6	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9355049
+	8	C3U	8	gale	IN_GLOBAL	V	25.9.26	Failed	388.1	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9355176
+	5	NA	NA	pond	GLOBAL	V	25.9.26	Failed	402.9	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9355094
+	
