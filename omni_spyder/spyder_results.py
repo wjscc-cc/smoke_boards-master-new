@@ -1,15 +1,17 @@
 import json
 import re
 import time
-from data import data_list
+from data import *
 import com.get_cookies2 as get_cookies
+from omni_spyder import data
 
 
 def catch_result(f_result):
     f_task = open("task.txt", "r", encoding='utf8')
     task_list = f_task.readlines()
     result_dir = []
-
+    case_cn_dir = data.case_cn_dir
+    case_gl_dir = data.case_gl_dir
     # 获取omni任务当前运行状态
     num = 0
     for task in task_list:
@@ -19,7 +21,6 @@ def catch_result(f_result):
 
         detail_list = []
 
-        # print(detail_list)
         omniLink_s = info[6].strip()
         print(num, product, end="---")
         if omniLink_s == "NA":
@@ -68,17 +69,30 @@ def catch_result(f_result):
                         info_response = None
                 if str(info_response) == "<Response [200]>":
                     reportInfo = info_response.text
+                    fail_list = re.findall('<tr style="color: red"><td>.*?</td></tr>', info_response.text)
+
+                    if len(fail_list) > 0:
+                        if info[1] == 'CN':
+                            for fail_line in fail_list:
+                                fail_numb = fail_line.split('<td>')[1].strip('</td>')
+                                if fail_numb in case_cn_dir:
+                                    case_cn_dir[fail_numb] = case_cn_dir[fail_numb] + 1
+                        else:
+                            for fail_line in fail_list:
+                                fail_numb = fail_line.split('<td>')[1].strip('</td>')
+                                if fail_numb in case_gl_dir:
+                                    case_gl_dir[fail_numb] = case_gl_dir[fail_numb] + 1
                     total_num = re.search("总计 \d+", reportInfo).group()[3:]
                     pass_num = re.search("pass \d+", reportInfo).group()[5:]
                     fail_num = re.search("fail \d+", reportInfo).group()[5:]
                     result = total_num + "\\" + fail_num
-                    numb='NA'
-                    phone='NA'
+                    numb = 'NA'
+                    phone = 'NA'
                     for i in data_list:
 
                         if info[0] in i and info[1] in i:
-                            numb=i[3]
-                            phone=i[1]
+                            numb = i[3]
+                            phone = i[1]
                     detail_list.append(int(fail_num))
                     detail_list.append(phone)
                     detail_list.append(numb)
@@ -95,9 +109,9 @@ def catch_result(f_result):
         f_result.write(result)
         f_result.write(("\n"))
         print(result)
-    result_dir.sort(key=lambda x: x[0],reverse = True )
-    # time.sleep(1)
-    title = ['失败数量\t', '机型\t','节点\t','内部代码\t','地区\t', '安卓版本\t', '日期\t', '任务链接\n']
+    result_dir.sort(key=lambda x: x[0], reverse=True)
+    time.sleep(1)
+    title = ['失败数量\t', '机型\t', '节点\t', '内部代码\t', '地区\t', '安卓版本\t', '日期\t', '任务链接\n']
     with open('失败排序.txt', 'a+', encoding='utf8') as f_result_or:
         f_result_or.truncate(0)
         for i in title:
@@ -105,3 +119,17 @@ def catch_result(f_result):
         for j in result_dir:
             for k in j:
                 f_result_or.write(f'{k}\t')
+    sorted_by_value_cn = dict(sorted(case_cn_dir.items(), key=lambda item: item[1], reverse=True))
+
+    sorted_by_value_gl = dict(sorted(case_gl_dir.items(), key=lambda item: item[1], reverse=True))
+
+    with open('fail_cn.txt', 'a+', encoding='utf8') as f_fail_cn:
+        f_fail_cn.truncate(0)
+        for i in sorted_by_value_cn:
+            f_fail_cn.write(f'{i}--{sorted_by_value_cn[i]}--{data.cn_case_check_dir[i]}')
+            f_fail_cn.write('\n')
+    with open('fail_gl.txt', 'a+', encoding='utf8') as f_fail_gl:
+        f_fail_gl.truncate(0)
+        for i in sorted_by_value_gl:
+            f_fail_gl.write(f'{i}--{sorted_by_value_gl[i]}--{data.gl_case_check_dir[i]}')
+            f_fail_gl.write('\n')
