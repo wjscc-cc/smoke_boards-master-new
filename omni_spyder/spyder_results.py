@@ -25,6 +25,7 @@ def catch_result(f_result):
         print(num, product, end="---")
         if omniLink_s == "NA":
             result = "未出包"
+            result_str = ''
         else:
             taskId = re.search("\d+", omniLink_s).group()
             omniLink = "http://omni.pt.miui.srv/api/task/executionsInfo?taskId=" + taskId
@@ -115,6 +116,7 @@ def catch_result(f_result):
                     result = "NOT INFO"
             else:
                 result = "Running"
+                result_str = ''
         f_result.write(result)
         f_result.write(f'\t{result_str}')
         f_result.write(("\n"))
