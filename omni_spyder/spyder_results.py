@@ -70,18 +70,27 @@ def catch_result(f_result):
                 if str(info_response) == "<Response [200]>":
                     reportInfo = info_response.text
                     fail_list = re.findall('<tr style="color: red"><td>.*?</td></tr>', info_response.text)
-
+                    # print(fail_list)
+                    result_str = ''
                     if len(fail_list) > 0:
                         if info[1] == 'CN':
                             for fail_line in fail_list:
                                 fail_numb = fail_line.split('<td>')[1].strip('</td>')
+                                fail_title = fail_line.split('<td>')[2].strip('</td>')
+                                fail_reason = fail_line.split('<td>')[4].strip('</td></tr')
                                 if fail_numb in case_cn_dir:
                                     case_cn_dir[fail_numb] = case_cn_dir[fail_numb] + 1
+                                result_str = f'{fail_numb}--{fail_title}--{fail_reason}|***|{result_str}'
+
                         else:
                             for fail_line in fail_list:
                                 fail_numb = fail_line.split('<td>')[1].strip('</td>')
+                                fail_title = fail_line.split('<td>')[2].strip('</td>')
+                                fail_reason = fail_line.split('<td>')[4].strip('</td></tr')
                                 if fail_numb in case_gl_dir:
                                     case_gl_dir[fail_numb] = case_gl_dir[fail_numb] + 1
+                                result_str = f'{fail_numb}--{fail_title}--{fail_reason}|***|{result_str}'
+                        print(result_str)
                     total_num = re.search("总计 \d+", reportInfo).group()[3:]
                     pass_num = re.search("pass \d+", reportInfo).group()[5:]
                     fail_num = re.search("fail \d+", reportInfo).group()[5:]
@@ -107,6 +116,7 @@ def catch_result(f_result):
             else:
                 result = "Running"
         f_result.write(result)
+        f_result.write(f'\t{result_str}')
         f_result.write(("\n"))
         print(result)
     result_dir.sort(key=lambda x: x[0], reverse=True)
