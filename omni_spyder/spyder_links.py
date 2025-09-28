@@ -4,18 +4,7 @@ import time
 import com.get_cookies2 as get_cookies
 
 
-# def delete_txt_file(filename):
-#     file = Path(filename)
-#     if file.is_file():
-#         file.unlink()
-#         print(f"{filename}已成功删除")
-#     else:
-#         print(f"{filename}不存在")
-#
-# delete_txt_file("omniLink.txt")
-# f_omniLink_s = open("omniLink.txt", "a+")
-# delete_txt_file("task.txt")
-# f_task = open("task.txt", "a+")
+
 
 def get_today(dis=0):
     today_list=[]

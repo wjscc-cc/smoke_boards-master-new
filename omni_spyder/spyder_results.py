@@ -25,6 +25,7 @@ def catch_result(f_result):
         print(num, product, end="---")
         if omniLink_s == "NA":
             result = "未出包"
+            result_str = ''
         else:
             taskId = re.search("\d+", omniLink_s).group()
             omniLink = "http://omni.pt.miui.srv/api/task/executionsInfo?taskId=" + taskId
@@ -70,18 +71,31 @@ def catch_result(f_result):
                 if str(info_response) == "<Response [200]>":
                     reportInfo = info_response.text
                     fail_list = re.findall('<tr style="color: red"><td>.*?</td></tr>', info_response.text)
-
+                    # print(fail_list)
+                    result_str = ''
+                    count=0
                     if len(fail_list) > 0:
                         if info[1] == 'CN':
                             for fail_line in fail_list:
+                                count=count+1
                                 fail_numb = fail_line.split('<td>')[1].strip('</td>')
+                                fail_title = fail_line.split('<td>')[2].strip('</td>')
+                                fail_reason = fail_line.split('<td>')[4].strip('</td></tr')
                                 if fail_numb in case_cn_dir:
                                     case_cn_dir[fail_numb] = case_cn_dir[fail_numb] + 1
+                                result_str = f'{result_str}         {count} 、{fail_numb}--{fail_title}--{fail_reason}'
+
                         else:
                             for fail_line in fail_list:
+                                count = count + 1
                                 fail_numb = fail_line.split('<td>')[1].strip('</td>')
+                                fail_title = fail_line.split('<td>')[2].strip('</td>')
+                                fail_reason = fail_line.split('<td>')[4].strip('</td></tr')
                                 if fail_numb in case_gl_dir:
                                     case_gl_dir[fail_numb] = case_gl_dir[fail_numb] + 1
+                                result_str = f'{result_str}         {count} 、{fail_numb}--{fail_title}--{fail_reason}'
+                        result_str=result_str.lstrip('         ')
+                        print(result_str)
                     total_num = re.search("总计 \d+", reportInfo).group()[3:]
                     pass_num = re.search("pass \d+", reportInfo).group()[5:]
                     fail_num = re.search("fail \d+", reportInfo).group()[5:]
@@ -106,32 +120,22 @@ def catch_result(f_result):
                     result = "NOT INFO"
             else:
                 result = "Running"
+                result_str = ''
         f_result.write(result)
+        f_result.write(f'\t{result_str}')
         f_result.write(("\n"))
         print(result)
-    result_dir.sort(key=lambda x: x[0], reverse=True)
-    time.sleep(1)
-    #机器失败case数量排序
-    title = ['失败数量\t', '机型\t', '节点\t', '内部代码\t', '地区\t', '安卓版本\t', '日期\t', '任务链接\n']
-    with open('机型失败case数量排序.txt', 'a+', encoding='utf8') as f_result_or:
-        f_result_or.truncate(0)
-        for i in title:
-            f_result_or.write(i)
-        for j in result_dir:
-            for k in j:
-                f_result_or.write(f'{k}\t')
-#国内失败case字典排序
+
     sorted_by_value_cn = dict(sorted(case_cn_dir.items(), key=lambda item: item[1], reverse=True))
-#国际失败case字典排序
+
     sorted_by_value_gl = dict(sorted(case_gl_dir.items(), key=lambda item: item[1], reverse=True))
-#写入国内case失败排行
-    with open('fail_cn.txt', 'a+', encoding='utf8') as f_fail_cn:
+
+    with open('国内case失败排序.txt', 'a+', encoding='utf8') as f_fail_cn:
         f_fail_cn.truncate(0)
         for i in sorted_by_value_cn:
             f_fail_cn.write(f'{i}--{sorted_by_value_cn[i]}--{data.cn_case_check_dir[i]}')
             f_fail_cn.write('\n')
-    # 写入国际case失败排行
-    with open('fail_gl.txt', 'a+', encoding='utf8') as f_fail_gl:
+    with open('国际case失败排序.txt', 'a+', encoding='utf8') as f_fail_gl:
         f_fail_gl.truncate(0)
         for i in sorted_by_value_gl:
             f_fail_gl.write(f'{i}--{sorted_by_value_gl[i]}--{data.gl_case_check_dir[i]}')

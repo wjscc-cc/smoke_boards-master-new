@@ -1,0 +1,27 @@
+失败数量	机型	节点	内部代码	地区	安卓版本	日期	任务链接
+10	M19	2	sky	IN_GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361822
+	9	P6	10	charoite	GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361621
+	9	NA	NA	zeus	CN	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361639
+	8	M19L	4	fire	GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9362108
+	8	C3U	8	gale	IN_GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361704
+	8	NA	NA	atmos	GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361796
+	7	P11	9	annibale	CN	W	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361570
+	7	P15A	1	dew	GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361900
+	7	O10U	3	onyx	IN_GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9362082
+	7	NA	NA	river	GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361619
+	7	M80	smoke	yudi	CN	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361910
+	7	C3UN	10	gale	GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361934
+	6	N8	10	ruyi	MI	W	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361721
+	5	O7	7	tanzanite	GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361694
+	5	N3	4	houji	MI	W	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361486
+	5	M11A	8	mondrian	GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361689
+	5	NA	NA	gust	GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361935
+	4	O10U	smoke	onyx	CN	W	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361667
+	4	O19A	8	creek	GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361832
+	4	M12	10	corot	GLOBAL	W	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361867
+	4	M19L	4	fire	GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9362107
+	4	NA	NA	pond	GLOBAL	V	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361650
+	3	O10	1	rodin	CN	W	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361612
+	3	O12U	8	klimt	MI	W	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361786
+	2	O16U	6	amethyst	MI	W	25.9.28	执行中	0.0	http://omni.pt.miui.srv/newTestCase/#/taskDetail/index?taskId=9361708
+	
